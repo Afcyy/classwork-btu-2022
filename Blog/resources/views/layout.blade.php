@@ -37,7 +37,7 @@
   </head>
   <body class="d-flex flex-column h-100">
     
-  @includeIf('components.menu.header', ['menuItems' => App\Models\MenuItem::orderByDesc('z-index')->get()])
+  @includeIf('components.menu.header', ['menuItems' => App\Models\MenuItem::orderByDesc('z-index')->limit(10)->get()])
 
 <!-- Begin page content -->
 <main class="flex-shrink-0">
