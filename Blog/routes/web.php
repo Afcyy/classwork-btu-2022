@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\MenuItem;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 
 use function Ramsey\Uuid\v1;
 
@@ -32,7 +35,14 @@ Route::prefix("admin")->name("admin")->group(function() {
     Route::get("", function () {
         return view('admin.index');
     });
+
     Route::get("/add", function (){
         return view('admin.add');
     })->name('add');
+
+    Route::post("/addMenuItem", function (Request $request) {
+        MenuItem::create($request->all());
+
+        return back();
+    })->name('.add.menu.item');
 });
